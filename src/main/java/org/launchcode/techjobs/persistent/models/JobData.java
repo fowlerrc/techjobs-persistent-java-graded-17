@@ -1,13 +1,18 @@
 package org.launchcode.techjobs.persistent.models;
 
+
 import java.util.ArrayList;
 
+
 // This is a change made in sandbox.
+
 
 /**
  * Created by LaunchCode
  */
 public class JobData {
+
+
 
 
     /**
@@ -23,11 +28,14 @@ public class JobData {
      */
     public static ArrayList<Job> findByColumnAndValue(String column, String value, Iterable<Job> allJobs) {
 
+
         ArrayList<Job> results = new ArrayList<>();
+
 
         if (value.toLowerCase().equals("all")){
             return (ArrayList<Job>) allJobs;
         }
+
 
         if (column.equals("all")){
             results = findByValue(value, allJobs);
@@ -35,15 +43,19 @@ public class JobData {
         }
         for (Job job : allJobs) {
 
+
             String aValue = getFieldValue(job, column);
+
 
             if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
                 results.add(job);
             }
         }
 
+
         return results;
     }
+
 
     public static String getFieldValue(Job job, String fieldName){
         String theValue;
@@ -55,8 +67,10 @@ public class JobData {
             theValue = job.getSkills().toString();
         }
 
+
         return theValue;
     }
+
 
     /**
      * Search all Job fields for the given term.
@@ -68,9 +82,13 @@ public class JobData {
     public static ArrayList<Job> findByValue(String value, Iterable<Job> allJobs) {
 
 
+
+
         ArrayList<Job> results = new ArrayList<>();
 
+
         for (Job job : allJobs) {
+
 
             if (job.getName().toLowerCase().contains(value.toLowerCase())) {
                 results.add(job);
@@ -80,11 +98,14 @@ public class JobData {
                 results.add(job);
             }
 
+
         }
+
 
         return results;
     }
 
 
-}
 
+
+}
